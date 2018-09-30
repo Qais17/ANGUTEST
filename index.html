@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ANGUTEST</title>
+<meta charset="utf-8">
+<script src="libs/angular.js"></script>
+<script src ="app.js"></script>
+<script src="services/nameFactory.js"></script>
+<script src="controllers/mainController.js"></script>
+</head>
+
+<body ng-app="app">
+
+<div  ng-controller="mainController">
+  <form name="newHero">
+<fieldset>
+  <label for="fullName">Nom et prénom:</label><br/>
+  <input type="fullName" type="text" ng-model="newHero.fullName"><br/>
+  <label for="attaque">attaque :</label><br/>
+  <input id="attaque" type="text" ng-model="newHero.attaque">
+  <button type="submit ng-click="addHero(newHero)"">GO</button>
+</fieldset>
+  </form>
+
+
+<table>
+  <tr ng-repeat="angutest in angutest | orderBy:'-attaque' | limitTo:3">
+    <td>
+  {{ angutest.fullName }} : {{ angutest.attaque | uppercase }}
+  </td>
+  </tr>
+</table>
+</div>
+
+</body>
+</html>
